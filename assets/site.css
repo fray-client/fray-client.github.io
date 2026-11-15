@@ -5,8 +5,8 @@
 
 :root {
   --red: #D94B45; --red-lip: #8a2925; --red-ink: #ff8a84;
-  --bg: #101114; --surface: #18191D; --elev: #22242A; --line: #2a2c32;
-  --text: #F4F4F5; --text-2: #A6A7AF; --text-3: #6b6d76;
+  --bg: #0D0E11; --surface: #18191D; --elev: #22242A; --line: #2a2c32;
+  --text: #F4F4F5; --text-2: #D6D7DC; --text-3: #A4A6AE;
   --sans: "Satoshi", system-ui, sans-serif; --display: "Clash Display", "Satoshi", sans-serif;
   --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
 }
@@ -26,10 +26,21 @@ a:hover { color: var(--red-ink); }
 .mark svg { width: 46px; height: 46px; flex: none; }
 .mark span { font: 600 28px/1 var(--display); letter-spacing: -.01em; }
 .mark:hover { color: var(--text); }
-.docs { display: flex; flex-direction: column; gap: 4px; }
-.docs a { text-decoration: none; color: var(--text-2); font-weight: 700; font-size: 16px; padding: 7px 12px; border-radius: 8px; margin-left: -12px; }
-.docs a:hover { color: var(--text); background: var(--surface); }
-.docs a[aria-current] { color: var(--text); background: var(--elev); box-shadow: inset 0 -2px 0 #0b0c0e; }
+/* Liquid glass pill: blurred, saturated backdrop, a bright top rim and a soft highlight on the upper half. */
+.glass { position: relative; display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px; overflow: hidden;
+  color: #fff; font-weight: 700; font-size: 16px; text-decoration: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.05));
+  backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 0 rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.12), 0 8px 24px rgba(0,0,0,.35);
+  transition: transform .18s cubic-bezier(.3,.7,.4,1), background .18s, box-shadow .18s; }
+.glass::before { content: ""; position: absolute; inset: 1px 10% auto; height: 45%; border-radius: 999px; background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0)); pointer-events: none; }
+.glass:hover { color: #fff; transform: translateY(-1px); background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.08));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 0 0 1px rgba(255,255,255,.2), 0 10px 28px rgba(0,0,0,.4); }
+.glass:active { transform: translateY(1px); }
+.glass:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 999px; }
+
+.docs { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.docs .glass[aria-current] { background: linear-gradient(180deg, rgba(217,75,69,.55), rgba(217,75,69,.25)); box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 0 0 1px rgba(255,138,132,.35), 0 8px 24px rgba(0,0,0,.35); }
 .toc summary { cursor: pointer; color: var(--text-3); font-size: 14px; font-weight: 700; list-style: none; padding: 2px 0 10px; }
 .toc summary::-webkit-details-marker { display: none; }
 .toc summary::after { content: " +"; }
@@ -95,14 +106,31 @@ tbody tr:first-child td { border-top: 2px solid var(--elev); }
 .btn.alt:active { box-shadow: 0 2px 0 #0b0c0e; }
 .plain { margin-top: 40px; color: var(--text-2); font-size: 16px; }
 
+/* ---------- early-access home (one screen) ---------- */
+.hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; display: flex; flex-direction: column; padding: clamp(20px, 4vw, 56px); }
+.hero-wing { position: absolute; right: -6vw; top: 50%; transform: translateY(-50%); width: min(64vw, 940px); opacity: .9; pointer-events: none; }
+.hero-wing svg { width: 100%; height: auto; display: block; }
+.hero-top { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.hero-top .mark svg { width: 34px; height: 34px; }
+.hero-top .mark span { font-size: 28px; }
+.glassnav { display: flex; gap: 10px; }
+.hero-main { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 620px; gap: 28px; }
+.hero-main h1 { font: 600 clamp(44px, 6.4vw, 92px)/.98 var(--display); letter-spacing: -.02em; }
+.hero-lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: #ECECEF; max-width: 520px; }
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; }
+.hero-cta .btn { height: 56px; font-size: 18px; border-radius: 12px; }
+.hero-note { font-size: 16px; color: #E2E3E7; max-width: 280px; line-height: 1.45; }
+.hero-foot { position: relative; display: flex; justify-content: space-between; gap: 8px; font-size: 15px; color: var(--text-2); }
+
 /* ---------- small screens ---------- */
 @media (max-width: 900px) {
   .doc { display: block; }
   .rail { position: static; height: auto; padding: 22px 16px 0; gap: 18px; }
   .mark svg { width: 36px; height: 36px; }
   .mark span { font-size: 24px; }
-  .docs { flex-direction: row; gap: 6px; }
-  .docs a { margin-left: 0; font-size: 15px; padding: 8px 12px; background: var(--surface); }
+  .docs { flex-direction: row; gap: 8px; }
+  .hero-wing { opacity: .16; right: -30vw; width: 120vw; }
+  .hero-foot { flex-direction: column; }
   .toc { background: var(--surface); border-radius: 10px; padding: 12px 16px; }
   .toc summary { padding: 0; color: var(--text-2); }
   .toc[open] summary { padding-bottom: 10px; }
