@@ -107,7 +107,8 @@ tbody tr:first-child td { border-top: 2px solid var(--elev); }
 .plain { margin-top: 40px; color: var(--text-2); font-size: 16px; }
 
 /* ---------- early-access home (one screen) ---------- */
-.hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; display: flex; flex-direction: column; padding: clamp(20px, 4vw, 56px); }
+html:has(body.hero) { overflow: hidden; }
+.hero { position: fixed; inset: 0; overflow: hidden; display: flex; flex-direction: column; padding: clamp(20px, 4vw, 56px); }
 .hero-wing { position: absolute; right: -6vw; top: 50%; transform: translateY(-50%); width: min(64vw, 940px); opacity: .9; pointer-events: none; }
 .hero-wing svg { width: 100%; height: auto; display: block; }
 .hero-top { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
