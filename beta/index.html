@@ -14,7 +14,7 @@
 <link rel="icon" href="../assets/wing.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/Satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=21505827cd">
+<link rel="stylesheet" href="../assets/site.css?v=58bd2ef95f">
 </head>
 <body class="hero">
 <div class="hero-bg" aria-hidden="true"></div>
@@ -30,14 +30,25 @@
   <h1>Get into<br>the Fray beta.</h1>
   <p class="hero-lede">Download Fray and sign in with Microsoft. If you're a tester, the beta sets itself up right away. If not, you're on the list, and Fray checks again every time it opens.</p>
   <div class="hero-cta">
-    <a class="btn" href="https://fray-server.fray-client.workers.dev/get/fray-beta-access.exe" download>Download for Windows</a>
+    <a class="btn" href="https://fray-server.fray-client.workers.dev/get/Fray-Beta-Installer.exe" download>Download for Windows</a>
     <p class="hero-note">On Windows the official Fray comes with it, so you can always play. <a href="https://discord.gg/2nsUmHctxW">Join the Discord</a> to hear when spots open.</p>
   </div>
+  <section class="heads-up" aria-labelledby="win-note">
+    <h2 id="win-note">Heads up for Windows</h2>
+    <p>Fray is new and isn't code-signed yet (that costs money), so your browser and Windows ask before running it.</p>
+    <ul>
+      <li><b>Browser says it isn't commonly downloaded:</b> in Chrome's downloads, click <kbd>Keep</kbd>. In Edge: <kbd>...</kbd> &rsaquo; <kbd>Keep</kbd> &rsaquo; <kbd>Show more</kbd> &rsaquo; <kbd>Keep anyway</kbd></li>
+      <li><b>Windows protected your PC:</b> <kbd>More info</kbd> &rsaquo; <kbd>Run anyway</kbd></li>
+    </ul>
+    <p>It only comes from this page. To be sure you have the real one, its SHA-256 should match this:</p>
+    <p class="sha">SHA-256 <code>3c32a0a4dca8e4e485a6c7481c06f3b9472ecd1d082f1c05c24ac38fe3dfc288</code></p>
+  </section>
   <div class="hero-linux">
-    <a class="pill" href="https://fray-server.fray-client.workers.dev/get/fray-beta-access-x86_64.AppImage" download>Linux (x86_64)</a>
-    <a class="pill" href="https://fray-server.fray-client.workers.dev/get/fray-beta-access-aarch64.AppImage" download>Linux (ARM64)</a>
+    <a class="pill" href="https://fray-server.fray-client.workers.dev/get/Fray-Beta-Installer-x86_64.AppImage" download>Linux (x86_64)</a>
+    <a class="pill" href="https://fray-server.fray-client.workers.dev/get/Fray-Beta-Installer-aarch64.AppImage" download>Linux (ARM64)</a>
     <p class="hero-note">On Linux, allow the AppImage to run as a program (right click, Properties), then open it.</p>
   </div>
+  <div class="linux-sha"><p class="sha">Linux (x86_64) <code>c4c997de8a63653a06f0c58468a25e54ce4c6dba0a34e1ce2e61c86157a9b56c</code></p><p class="sha">Linux (ARM64) <code>e4d26e14636112f4250452951894f3ca76220b63fe2e4fbcafa13d9173e7f7c8</code></p></div>
 </main>
 <footer class="hero-foot">
   <span>&copy; 2026 Fray</span>
