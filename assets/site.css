@@ -120,6 +120,8 @@ html:has(body.hero) { overflow: hidden; }
 .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; }
 .hero-cta .btn { height: 56px; font-size: 18px; border-radius: 12px; }
 .hero-note { font-size: 16px; color: #E2E3E7; max-width: 280px; line-height: 1.45; }
+.hero-linux { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 16px; margin-top: 22px; }
+.hero-linux .hero-note { max-width: 300px; font-size: 15px; color: var(--text-2); }
 .hero-foot { position: relative; display: flex; justify-content: space-between; gap: 8px; font-size: 15px; color: var(--text-2); }
 
 /* ---------- small screens ---------- */
