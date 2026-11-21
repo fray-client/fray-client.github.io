@@ -190,3 +190,7 @@ html:has(body.beta) { overflow: auto; }
   .landing { padding-top: 8vh; }
   .big svg { width: 96px; height: 96px; }
 }
+
+/* /pack/: a friend's modpack code */
+.pack-code { font: 600 clamp(40px, 7vw, 64px)/1 var(--display, inherit); letter-spacing: .04em; margin: 0 0 18px; user-select: all; }
+
